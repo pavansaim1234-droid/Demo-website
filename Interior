@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WOODORA | Furniture Store</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Arial,Helvetica,sans-serif;background:#f7f4ef;color:#27231f}
+header{position:sticky;top:0;z-index:1000;background:#fff;border-bottom:1px solid #ddd6cc}
+.navbar{max-width:1250px;height:72px;margin:auto;padding:0 25px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:27px;font-weight:800;letter-spacing:3px;color:#5c3d28}.logo span{color:#b88955}
+nav{display:flex;gap:25px}nav a{text-decoration:none;color:#403a34;font-size:14px;font-weight:600}
+nav a:hover{color:#b27b43}
+.nav-icons{display:flex;gap:10px}.icon{border:1px solid #ddd5ca;border-radius:50%;width:38px;height:38px;display:flex;align-items:center;justify-content:center;cursor:pointer;position:relative}.icon:hover{background:#5c3d28;color:#fff}
+.cart-count{position:absolute;right:-3px;top:-4px;background:#b88955;color:#fff;width:17px;height:17px;border-radius:50%;font-size:10px;display:flex;align-items:center;justify-content:center}
+.hero{max-width:1250px;margin:30px auto;padding:0 25px}.hero-box{min-height:550px;border-radius:25px;overflow:hidden;background:linear-gradient(90deg,rgba(34,25,18,.86),rgba(34,25,18,.25)),url("https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1600&q=85") center/cover;display:flex;align-items:center;padding:70px;color:#fff}.hero-content{max-width:580px}.hero-content small{text-transform:uppercase;letter-spacing:4px;color:#e0b982}.hero-content h1{font-size:62px;line-height:1.05;margin:18px 0}.hero-content p{font-size:17px;line-height:1.7;color:#eee}.hero-buttons{margin-top:30px;display:flex;gap:12px}.btn{padding:14px 25px;border-radius:5px;text-decoration:none;font-weight:bold;border:0;cursor:pointer;display:inline-block}.btn-primary{background:#b88955;color:white}.btn-primary:hover{background:#956b3e}.btn-outline{border:1px solid #fff;color:#fff;background:transparent}.btn-outline:hover{background:#fff;color:#333}
+.section{max-width:1250px;margin:80px auto;padding:0 25px}.section-heading{display:flex;justify-content:space-between;align-items:end;margin-bottom:28px}.section-heading h2{font-size:35px}.section-heading p{color:#777;margin-top:8px}.view-all{color:#9a6939;text-decoration:none;font-weight:bold}
+.categories{display:grid;grid-template-columns:repeat(6,1fr);gap:15px}.category{height:200px;border-radius:14px;overflow:hidden;position:relative;cursor:pointer}.category img{width:100%;height:100%;object-fit:cover;transition:.5s}.category:hover img{transform:scale(1.08)}.category:after{content:"";position:absolute;inset:0;background:linear-gradient(transparent,rgba(0,0,0,.75))}.category-name{position:absolute;bottom:18px;left:18px;color:#fff;z-index:2;font-size:17px;font-weight:bold}
+.shop-tools{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:25px}.shop-tools input,.shop-tools select{padding:12px 15px;border:1px solid #ddd1c4;background:#fff;border-radius:6px;outline:none}.shop-tools input{min-width:250px}
+.products{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}.product{background:#fff;border-radius:14px;overflow:hidden;border:1px solid #e5dfd7;transition:.3s}.product:hover{transform:translateY(-6px);box-shadow:0 15px 40px rgba(0,0,0,.1)}.product-image{height:260px;position:relative;overflow:hidden}.product-image img{width:100%;height:100%;object-fit:cover;transition:.5s}.product:hover img{transform:scale(1.06)}.badge{position:absolute;top:13px;left:13px;background:#5c3d28;color:#fff;padding:6px 10px;font-size:10px;border-radius:4px;z-index:2}.wishlist{position:absolute;top:13px;right:13px;width:35px;height:35px;background:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;z-index:3;cursor:pointer}.wishlist.active{color:#b24a3a}.product-info{padding:18px}.product-category{color:#a17b54;font-size:11px;text-transform:uppercase;letter-spacing:1px}.product-info h3{margin:7px 0;font-size:18px}.rating{color:#d59b45;font-size:13px}.rating span{color:#888}.price{margin-top:12px;font-size:20px;font-weight:bold}.old-price{color:#999;text-decoration:line-through;font-size:13px;margin-left:7px}.add-cart{width:100%;margin-top:15px;padding:11px;background:#f0e8de;border:0;color:#5c3d28;font-weight:bold;cursor:pointer;border-radius:5px}.add-cart:hover{background:#5c3d28;color:#fff}
+.banner{max-width:1250px;margin:80px auto;padding:0 25px}.banner-box{min-height:330px;border-radius:20px;background:linear-gradient(90deg,rgba(31,23,18,.88),rgba(31,23,18,.35)),url("https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1600&q=85") center/cover;display:flex;align-items:center;padding:50px;color:#fff}.banner-content{max-width:500px}.banner-content h2{font-size:42px;margin-bottom:15px}.banner-content p{color:#ddd;line-height:1.6}
+.commercial{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.commercial-card{height:280px;border-radius:15px;overflow:hidden;position:relative}.commercial-card img{width:100%;height:100%;object-fit:cover;transition:.5s}.commercial-card:hover img{transform:scale(1.08)}.commercial-card:after{content:"";position:absolute;inset:0;background:linear-gradient(transparent,rgba(0,0,0,.8))}.commercial-content{position:absolute;bottom:25px;left:25px;z-index:2;color:#fff}.commercial-content h3{font-size:25px}.commercial-content p{margin-top:5px;color:#ddd}
+.newsletter{background:#5c3d28;color:#fff;padding:65px 25px;text-align:center}.newsletter h2{font-size:35px}.newsletter p{margin:12px 0 25px;color:#ddd}.email-box{max-width:500px;margin:auto;display:flex}.email-box input{flex:1;padding:15px;border:0;outline:none}.email-box button{padding:15px 25px;border:0;background:#c59661;color:#fff;font-weight:bold;cursor:pointer}
+footer{background:#211914;color:#fff;padding:60px 25px 25px}.footer-grid{max-width:1250px;margin:auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px}.footer-column h3{margin-bottom:18px}.footer-column p{color:#aaa;line-height:1.7}.footer-column a{display:block;color:#aaa;text-decoration:none;margin:10px 0}.footer-column a:hover{color:#fff}.copyright{max-width:1250px;margin:40px auto 0;padding-top:20px;border-top:1px solid #40352f;color:#777;font-size:12px}
+.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:2000;align-items:center;justify-content:center;padding:20px}.modal.show{display:flex}.modal-box{background:#fff;border-radius:15px;max-width:850px;width:100%;max-height:90vh;overflow:auto;position:relative;padding:30px}.close{position:absolute;right:20px;top:15px;border:0;background:none;font-size:30px;cursor:pointer}.modal-grid{display:grid;grid-template-columns:1fr 1fr;gap:30px}.modal-grid img{width:100%;height:400px;object-fit:cover;border-radius:10px}.modal-info h2{font-size:32px;margin:10px 0}.modal-info p{color:#666;line-height:1.7;margin:15px 0}.detail-price{font-size:25px;font-weight:bold;margin:15px 0}.cart-panel{position:fixed;right:-420px;top:0;width:400px;height:100vh;background:#fff;z-index:3000;box-shadow:-10px 0 40px rgba(0,0,0,.2);padding:25px;transition:.3s;overflow:auto}.cart-panel.open{right:0}.cart-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:25px}.cart-header button{border:0;background:none;font-size:25px;cursor:pointer}.cart-item{display:flex;gap:12px;border-bottom:1px solid #eee;padding:15px 0}.cart-item img{width:75px;height:75px;object-fit:cover;border-radius:7px}.cart-item h4{font-size:14px;margin-bottom:6px}.cart-item p{font-weight:bold}.cart-item button{border:0;background:#eee;padding:3px 7px;cursor:pointer}.cart-total{font-size:22px;font-weight:bold;margin:25px 0}.empty{text-align:center;color:#777;padding:50px 0}
+.toast{position:fixed;bottom:25px;right:25px;background:#211914;color:#fff;padding:14px 20px;border-radius:6px;transform:translateY(100px);opacity:0;transition:.3s;z-index:4000}.toast.show{transform:translateY(0);opacity:1}
+@media(max-width:1000px){nav{display:none}.categories{grid-template-columns:repeat(3,1fr)}.products{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:650px){.hero-box{padding:35px;min-height:500px}.hero-content h1{font-size:42px}.categories,.products,.commercial{grid-template-columns:1fr 1fr}.section-heading{display:block}.view-all{display:inline-block;margin-top:15px}.footer-grid{grid-template-columns:1fr 1fr}.modal-grid{grid-template-columns:1fr}.modal-grid img{height:280px}.cart-panel{width:100%;right:-100%}}
+@media(max-width:450px){.categories,.products,.commercial{grid-template-columns:1fr}.hero-buttons{flex-direction:column}.shop-tools input{width:100%;min-width:0}}
+</style>
+</head>
+<body>
+
+<header>
+<div class="navbar">
+<div class="logo">WOOD<span>ORA</span></div>
+<nav>
+<a href="#home">Home</a><a href="#shop">Shop</a><a href="#categories">Collections</a><a href="#commercial">Commercial</a><a href="#contact">Contact</a>
+</nav>
+<div class="nav-icons">
+<div class="icon" onclick="focusSearch()">⌕</div>
+<div class="icon" onclick="showWishlist()">♡</div>
+<div class="icon" onclick="openCart()">🛒<span class="cart-count" id="cartCount">0</span></div>
+</div>
+</div>
+</header>
+
+<section class="hero" id="home">
+<div class="hero-box">
+<div class="hero-content">
+<small>Premium Furniture Collection</small>
+<h1>Furniture that makes your space feel like home.</h1>
+<p>Discover beautifully crafted furniture designed for modern homes, hotels, restaurants, offices and commercial spaces.</p>
+<div class="hero-buttons"><a href="#shop" class="btn btn-primary">Shop Furniture</a><a href="#categories" class="btn btn-outline">Explore Collection</a></div>
+</div>
+</div>
+</section>
+
+<section class="section" id="categories">
+<div class="section-heading"><div><h2>Shop by Category</h2><p>Find furniture for every space.</p></div></div>
+<div class="categories">
+<div class="category" onclick="filterCategory('Living Room')"><img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=600&q=80"><div class="category-name">Sofas</div></div>
+<div class="category" onclick="filterCategory('Seating')"><img src="https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?auto=format&fit=crop&w=600&q=80"><div class="category-name">Chairs</div></div>
+<div class="category" onclick="filterCategory('Bedroom')"><img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=600&q=80"><div class="category-name">Bedroom</div></div>
+<div class="category" onclick="filterCategory('Tables')"><img src="https://images.unsplash.com/photo-1532372320572-cda25653a26d?auto=format&fit=crop&w=600&q=80"><div class="category-name">Tables</div></div>
+<div class="category" onclick="filterCategory('Office')"><img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=600&q=80"><div class="category-name">Office</div></div>
+<div class="category" onclick="filterCategory('Dining')"><img src="https://images.unsplash.com/photo-1556912173-46c336c7fd55?auto=format&fit=crop&w=600&q=80"><div class="category-name">Dining</div></div>
+</div>
+</section>
+
+<section class="section" id="shop">
+<div class="section-heading"><div><h2>Featured Furniture</h2><p>Browse our collection and add your favorites to the cart.</p></div></div>
+<div class="shop-tools">
+<input id="searchInput" type="search" placeholder="Search furniture..." oninput="renderProducts()">
+<select id="categoryFilter" onchange="renderProducts()">
+<option value="All">All Categories</option><option>Living Room</option><option>Seating</option><option>Bedroom</option><option>Tables</option><option>Office</option><option>Dining</option>
+</select>
+<select id="sortFilter" onchange="renderProducts()">
+<option value="featured">Featured</option><option value="low">Price: Low to High</option><option value="high">Price: High to Low</option><option value="name">Name</option>
+</select>
+</div>
+<div class="products" id="productGrid"></div>
+</section>
+
+<section class="banner">
+<div class="banner-box"><div class="banner-content"><h2>Make your home extraordinary.</h2><p>Enjoy up to 30% off selected furniture collections. Create a beautiful living space with timeless pieces.</p><br><a href="#shop" class="btn btn-primary">Shop Offers</a></div></div>
+</section>
+
+<section class="section" id="commercial">
+<div class="section-heading"><div><h2>Furniture for Every Business</h2><p>Complete furniture solutions for commercial spaces.</p></div></div>
+<div class="commercial">
+<div class="commercial-card"><img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=900&q=80"><div class="commercial-content"><h3>Hotels</h3><p>Luxury guest room & lobby furniture</p></div></div>
+<div class="commercial-card"><img src="https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=900&q=80"><div class="commercial-content"><h3>Restaurants</h3><p>Dining tables, chairs & interiors</p></div></div>
+<div class="commercial-card"><img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=900&q=80"><div class="commercial-content"><h3>Shops & Malls</h3><p>Display, reception & retail furniture</p></div></div>
+</div>
+</section>
+
+<section class="newsletter">
+<h2>Stay inspired.</h2><p>Get new furniture collections and exclusive offers.</p>
+<div class="email-box"><input id="emailInput" type="email" placeholder="Enter your email address"><button onclick="subscribe()">Subscribe</button></div>
+</section>
+
+<footer id="contact">
+<div class="footer-grid">
+<div class="footer-column"><h2 class="logo">WOOD<span>ORA</span></h2><p>Premium furniture for beautiful homes, hospitality and commercial spaces.</p></div>
+<div class="footer-column"><h3>Furniture</h3><a href="#shop">Living Room</a><a href="#shop">Bedroom</a><a href="#shop">Dining</a><a href="#shop">Office</a></div>
+<div class="footer-column"><h3>Commercial</h3><a href="#commercial">Hotels</a><a href="#commercial">Restaurants</a><a href="#commercial">Shops</a><a href="#commercial">Malls</a></div>
+<div class="footer-column"><h3>Company</h3><a href="#">About Us</a><a href="#">Contact</a><a href="#">Delivery</a><a href="#">Privacy</a></div>
+</div>
+<div class="copyright">© 2026 WOODORA Furniture. All Rights Reserved.</div>
+</footer>
+
+<div class="modal" id="productModal" onclick="closeModal(event)">
+<div class="modal-box">
+<button class="close" onclick="closeProductModal()">×</button>
+<div class="modal-grid">
+<img id="modalImage" src="" alt="">
+<div class="modal-info">
+<div class="product-category" id="modalCategory"></div>
+<h2 id="modalName"></h2>
+<div class="rating">★★★★★ <span id="modalRating"></span></div>
+<div class="detail-price" id="modalPrice"></div>
+<p id="modalDescription"></p>
+<p><strong>Material:</strong> Premium furniture-grade materials</p>
+<p><strong>Delivery:</strong> Available for selected locations</p>
+<button class="btn btn-primary" id="modalCartButton">Add to Cart</button>
+</div>
+</div>
+</div>
+</div>
+
+<aside class="cart-panel" id="cartPanel">
+<div class="cart-header"><h2>Your Cart</h2><button onclick="closeCart()">×</button></div>
+<div id="cartItems"></div>
+<div class="cart-total" id="cartTotal">Total: ₹0</div>
+<button class="btn btn-primary" style="width:100%" onclick="checkout()">Proceed to Checkout</button>
+</aside>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const products=[
+{id:1,name:"Modern Lounge Sofa",category:"Living Room",price:48999,oldPrice:62000,rating:4.9,badge:"BEST SELLER",image:"https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=700&q=85",description:"A comfortable contemporary sofa with a refined silhouette, designed for modern living rooms."},
+{id:2,name:"Accent Lounge Chair",category:"Seating",price:18500,oldPrice:null,rating:4.8,badge:"NEW",image:"https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?auto=format&fit=crop&w=700&q=85",description:"A stylish accent chair that adds comfort and character to your space."},
+{id:3,name:"Oak Coffee Table",category:"Tables",price:14999,oldPrice:null,rating:4.7,badge:"",image:"https://images.unsplash.com/photo-1532372320572-cda25653a26d?auto=format&fit=crop&w=700&q=85",description:"A clean-lined coffee table inspired by timeless natural wood furniture."},
+{id:4,name:"Luxury King Bed",category:"Bedroom",price:59990,oldPrice:74000,rating:4.9,badge:"SALE",image:"https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=700&q=85",description:"A spacious king bed designed to create a calm and luxurious bedroom."},
+{id:5,name:"Executive Office Desk",category:"Office",price:32999,oldPrice:null,rating:4.8,badge:"",image:"https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=700&q=85",description:"A professional desk for focused workspaces, studios and executive offices."},
+{id:6,name:"Classic Dining Set",category:"Dining",price:42999,oldPrice:52000,rating:4.8,badge:"SALE",image:"https://images.unsplash.com/photo-1556912173-46c336c7fd55?auto=format&fit=crop&w=700&q=85",description:"A warm dining set made for everyday family meals and entertaining guests."},
+{id:7,name:"Velvet Accent Chair",category:"Seating",price:16999,oldPrice:null,rating:4.6,badge:"",image:"https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=700&q=85",description:"A plush statement chair that works beautifully in bedrooms, lounges and reading corners."},
+{id:8,name:"Minimal Side Table",category:"Tables",price:8999,oldPrice:null,rating:4.7,badge:"NEW",image:"https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85?auto=format&fit=crop&w=700&q=85",description:"A compact side table with a simple modern form for versatile placement."}
+];
+
+let cart=JSON.parse(localStorage.getItem("woodoraCart")||"[]");
+let wishlist=JSON.parse(localStorage.getItem("woodoraWishlist")||"[]");
+
+function money(n){return "₹"+n.toLocaleString("en-IN")}
+function save(){localStorage.setItem("woodoraCart",JSON.stringify(cart));localStorage.setItem("woodoraWishlist",JSON.stringify(wishlist));updateCartCount()}
+
+function renderProducts(){
+const search=document.getElementById("searchInput").value.toLowerCase();
+const category=document.getElementById("categoryFilter").value;
+const sort=document.getElementById("sortFilter").value;
+let list=products.filter(p=>(category==="All"||p.category===category)&&p.name.toLowerCase().includes(search));
+if(sort==="low")list.sort((a,b)=>a.price-b.price);
+if(sort==="high")list.sort((a,b)=>b.price-a.price);
+if(sort==="name")list.sort((a,b)=>a.name.localeCompare(b.name));
+document.getElementById("productGrid").innerHTML=list.length?list.map(productCard).join('<span></span>'):'<div class="empty">No furniture found.</div>';
+}
+
+function productCard(p){
+const liked=wishlist.includes(p.id);
+return `<div class="product">
+<div class="product-image">
+${p.badge?`<span class="badge">${p.badge}</span>`:""}
+<div class="wishlist ${liked?"active":""}" onclick="toggleWishlist(${p.id})">${liked?"♥":"♡"}</div>
+<img src="${p.image}" alt="${p.name}" onclick="openProduct(${p.id})" style="cursor:pointer">
+</div>
+<div class="product-info">
+<div class="product-category">${p.category}</div>
+<h3>${p.name}</h3>
+<div class="rating">★★★★★ <span>(${p.rating})</span></div>
+<div class="price">${money(p.price)} ${p.oldPrice?`<span class="old-price">${money(p.oldPrice)}</span>`:""}</div>
+<button class="add-cart" onclick="addToCart(${p.id})">Add to Cart</button>
+</div></div>`;
+}
+
+function addToCart(id){
+const item=cart.find(x=>x.id===id);
+if(item)item.qty++;
+else cart.push({id,qty:1});
+save();showToast("Added to cart");
+}
+
+function removeFromCart(id){
+cart=cart.filter(x=>x.id!==id);save();renderCart();
+}
+
+function changeQty(id,delta){
+const item=cart.find(x=>x.id===id);
+if(!item)return;
+item.qty+=delta;
+if(item.qty<=0)removeFromCart(id);else{save();renderCart()}
+}
+
+function updateCartCount(){document.getElementById("cartCount").textContent=cart.reduce((s,x)=>s+x.qty,0)}
+function openCart(){document.getElementById("cartPanel").classList.add("open");renderCart()}
+function closeCart(){document.getElementById("cartPanel").classList.remove("open")}
+
+function renderCart(){
+const box=document.getElementById("cartItems");
+if(!cart.length){box.innerHTML='<div class="empty">Your cart is empty.</div>';document.getElementById("cartTotal").textContent="Total: ₹0";return}
+let total=0;
+box.innerHTML=cart.map(item=>{
+const p=products.find(x=>x.id===item.id);const subtotal=p.price*item.qty;total+=subtotal;
+return `<div class="cart-item"><img src="${p.image}" alt=""><div style="flex:1"><h4>${p.name}</h4><p>${money(p.price)}</p><div style="margin-top:7px"><button onclick="changeQty(${p.id},-1)">−</button> ${item.qty} <button onclick="changeQty(${p.id},1)">+</button> <button style="margin-left:8px" onclick="removeFromCart(${p.id})">Remove</button></div></div></div>`;
+}).join("");
+document.getElementById("cartTotal").textContent="Total: "+money(total);
+}
+
+function openProduct(id){
+const p=products.find(x=>x.id===id);
+document.getElementById("modalImage").src=p.image;
+document.getElementById("modalCategory").textContent=p.category;
+document.getElementById("modalName").textContent=p.name;
+document.getElementById("modalRating").textContent="("+p.rating+")";
+document.getElementById("modalPrice").textContent=money(p.price);
+document.getElementById("modalDescription").textContent=p.description;
+document.getElementById("modalCartButton").onclick=()=>{addToCart(p.id);closeProductModal()};
+document.getElementById("productModal").classList.add("show");
+}
+function closeProductModal(){document.getElementById("productModal").classList.remove("show")}
+function closeModal(e){if(e.target.id==="productModal")closeProductModal()}
+
+function toggleWishlist(id){
+if(wishlist.includes(id))wishlist=wishlist.filter(x=>x!==id);else wishlist.push(id);
+save();renderProducts();showToast(wishlist.includes(id)?"Added to wishlist":"Removed from wishlist");
+}
+function showWishlist(){
+const liked=products.filter(p=>wishlist.includes(p.id));
+if(!liked.length){showToast("Your wishlist is empty");return}
+document.getElementById("searchInput").value="";
+document.getElementById("categoryFilter").value="All";
+document.getElementById("productGrid").innerHTML=liked.map(productCard).join("");
+document.getElementById("shop").scrollIntoView({behavior:"smooth"});
+showToast("Showing your wishlist");
+}
+function filterCategory(cat){
+document.getElementById("categoryFilter").value=cat;
+document.getElementById("searchInput").value="";
+renderProducts();
+document.getElementById("shop").scrollIntoView({behavior:"smooth"});
+}
+function focusSearch(){document.getElementById("shop").scrollIntoView({behavior:"smooth"});setTimeout(()=>document.getElementById("searchInput").focus(),500)}
+function subscribe(){
+const email=document.getElementById("emailInput").value.trim();
+if(!email||!email.includes("@")){showToast("Please enter a valid email");return}
+document.getElementById("emailInput").value="";
+showToast("Thanks for subscribing!");
+}
+function checkout(){
+if(!cart.length){showToast("Your cart is empty");return}
+showToast("Checkout demo — connect your payment gateway here.");
+}
+function showToast(message){
+const t=document.getElementById("toast");t.textContent=message;t.classList.add("show");
+clearTimeout(window.toastTimer);window.toastTimer=setTimeout(()=>t.classList.remove("show"),2200);
+}
+renderProducts();updateCartCount();
+</script>
+</body>
+</html>
